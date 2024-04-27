@@ -1,12 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const fetch = require('node-fetch');
 
 const app = express();
-const port = 3000;
-
-// Middleware to parse JSON data
+const port = 3000; a
 app.use(bodyParser.json());
+
 
 // Route to handle POST requests from Dialogflow
 app.post('/webhook', async (req, res) => {
@@ -56,8 +54,8 @@ async function fetchShipmentDate(orderId) {
 
     if (response.ok) {
         const responseData = await response.json();
-        const iso8601ShipmentDate = responseData.shipmentDate;
-        const shipmentDate = new Date(iso8601ShipmentDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const ShipmentDate = responseData.shipmentDate;
+        const shipmentDate = new Date(ShipmentDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
         return shipmentDate;
     } else {
